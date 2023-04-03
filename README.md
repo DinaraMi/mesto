@@ -1,5 +1,5 @@
 # Проект: Место
-https://dinarami.github.io/mesto/
+
 ### Обзор
 
 * Figma
