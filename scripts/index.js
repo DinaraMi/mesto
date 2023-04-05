@@ -6,7 +6,7 @@ const profileName = document.querySelector ('.profile__title');
 const profileJob = document.querySelector ('.profile__subtitle');
 const btnClose = document.querySelector('.popup__close-btn');
 const btnSave = document.querySelector('.popup__save');
-const formElement = document.querySelector('.popap__formElement');
+const formElement = document.querySelector('.popup__formElement');
 
 function openPopup(){
   popup.classList.add('popup_opened');
