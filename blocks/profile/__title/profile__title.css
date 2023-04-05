@@ -1,6 +1,7 @@
 .profile__title{
-  min-width: 189px;
+  width: 189px;
   min-height: 26px;
+  display: block;
   font-style: normal;
   font-weight: 500;
   font-size: 27px;
@@ -13,7 +14,7 @@
 
 @media screen and (min-width: 1280px){
   .profile__title{
-    min-width: 294px;
+    width: 294px;
     min-height: 39px;
     font-style: normal;
     font-weight: 500;

@@ -1,4 +1,4 @@
-.popup__description{
+.popup__name{
   font-family: "inter", Arial, sans-serif;
   color: #000000;
   font-style: normal;
@@ -12,10 +12,20 @@
   border-left: 0;
   border-right: 0;
   box-sizing: border-box;
+  margin: 45px 0 0 0;
+  opacity: 0.2;
+}
+
+.popup__name:nth-child(even){
+  margin: 42px 0 0 0;
 }
 
 @media screen and (min-width: 1280px){
-  .popup__description{
+  .popup__name{
     min-width: 358px;
+
   }
+
 }
+
+

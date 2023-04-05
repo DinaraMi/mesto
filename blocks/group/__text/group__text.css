@@ -1,6 +1,4 @@
 .group__text{
-  min-width: 246px;
-  min-height: 23px;
   margin: auto 20px;
   display: flex;
   justify-content: space-between;

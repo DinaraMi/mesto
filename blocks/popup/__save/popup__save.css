@@ -9,6 +9,8 @@
   text-align: center;
   color: #FFFFFF;
   margin: 46px 22px 25px 22px;
+  cursor: pointer;
+  border: none;
 }
 
 .popup__save:hover{
@@ -19,7 +21,7 @@
   .popup__save{
     min-width: 358px;
     min-height: 50px;
-    margin: 46px 36px 37px 36px;
+    margin: 48px auto 37px ;
     font-size: 18px;
     line-height: 122.22%;
   }

@@ -3,7 +3,7 @@
   font-weight: 900;
   font-size: 18px;
   line-height: 122.22%;
-  padding-top: 8px;
+  margin: 23px auto 45px;
 }
 
 @media screen and (min-width: 1280px){
@@ -11,7 +11,6 @@
     font-size: 24px;
     line-height: 120.83%;
     align-self: start;
-    padding-left: 36px;
-    padding-top: 10px;
+    margin: 34px 64px 25px 36px;
   }
 }
