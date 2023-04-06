@@ -2,7 +2,7 @@
   all: unset;
   position: absolute;
   top: -36px;
-  left: 262px;
+  right: 0;
   background-image: url(../../../images/Close\ Icon.svg);
   background-repeat: no-repeat;
   background-size: cover;
