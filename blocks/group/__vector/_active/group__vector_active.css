@@ -1,6 +1,6 @@
-.group__vector{
+.group__vector_active{
   all: unset;
-  background-image: url(../../../images/VectorGroup.svg);
+  background-image: url(../../../../images/Union.svg);
   background-repeat: no-repeat;
   background-size: cover;
   width: 22px;
@@ -8,8 +8,3 @@
   align-self: center;
   cursor: pointer;
 }
-
-.group__vector:hover{
-  opacity: 0.5;
-}
-
