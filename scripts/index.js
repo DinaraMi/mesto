@@ -1,5 +1,3 @@
-import { initialCards } from './constants.js';
-
 const editProfilePopup = document.querySelector('.popup');
 const openBtnEditProfilePopup = document.querySelector('.profile__edit-button');
 const editProfileNameInput = editProfilePopup.querySelector('.popup__text_type_name');
