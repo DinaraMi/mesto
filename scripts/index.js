@@ -12,7 +12,10 @@ const openPopup = (popupElement) => {
   popupElement.classList.add('popup_opened');
 };
 const closePopup = (popupElement) => {
-  popupElement.classList.remove('popup_opened');
+  popupElement.classList.add('popup_closing');
+  setTimeout(() => {
+    popupElement.classList.remove('popup_opened', 'popup_closing');
+  }, 300);
 };
 const openPopupEditProfile = () => {
   openPopup(editProfilePopup);

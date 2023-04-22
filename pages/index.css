@@ -42,4 +42,5 @@
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/_opened_new-place/popup_opened_new-place.css);
 @import url(../blocks/popup/_opened_images/popup__opened_images.css);
+@import url(../blocks/popup/_closing/popup_closing.css);
 @import url(../blocks/body/body.css);
