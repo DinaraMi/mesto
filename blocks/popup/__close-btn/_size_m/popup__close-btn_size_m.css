@@ -1,9 +1,9 @@
-.popup-newplace__close-btn{
+.popup__close-btn_size_m{
   all: unset;
   position: absolute;
-  top: -36px;
+  top: -30px;
   right: 0;
-  background-image: url(../../../images/Close\ Icon.svg);
+  background-image: url(../../../../images/Close\ Icon.svg);
   background-repeat: no-repeat;
   background-size: cover;
   width: 20px;
@@ -11,14 +11,14 @@
   cursor: pointer;
 }
 
-.popup-newplace__close-btn:hover{
+.popup__close-btn_size_m:hover{
   opacity: 0.6;
 }
 
 @media screen and (min-width: 1280px){
-  .popup-newplace__close-btn{
-    left: 440px;
+  .popup__close-btn_size_m{
     top: -40px;
+    right: -40px;
     width: 32px;
     height: 32px;
   }

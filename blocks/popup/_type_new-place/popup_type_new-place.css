@@ -1,4 +1,4 @@
-.popup-newplace{
+.popup_type_new-place{
   width: 100%;
   background-color: rgb(0, 0, 0, 0.5);
   font-family: "inter", Arial, sans-serif;
@@ -14,4 +14,3 @@
   opacity: 0;
   transition: opacity 0.3s ease-in-out, visibility 0s 0.3s;
 }
-

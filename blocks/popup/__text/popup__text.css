@@ -17,7 +17,7 @@
 }
 
 @media screen and (min-width: 1280px){
-  .popup__name{
+  .popup__text{
     width: 83.26%;
   }
 }
