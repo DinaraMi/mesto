@@ -10,7 +10,6 @@
   display: flex;
   justify-content: center;
   visibility: hidden;
-  z-index: 9999;
   opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+  transition: visibility 0s linear 0.25s, opacity 0.25s linear;
 }

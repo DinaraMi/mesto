@@ -32,12 +32,12 @@
       <p class="footer__paragraph">© 2020 Mesto Russia</p>
     </footer>
   </div>
-  <div class="popup">
+  <div class="popup popup_type_edit-profile">
     <div class="popup__container">
-      <button class="popup__close-btn" type="button" aria-label="Закрыть редактирование"></button>
+      <button class="popup__close-btn popup__close-btn_size_s" type="button" aria-label="Закрыть редактирование"></button>
       <div class="popup__content">
         <h3 class="popup__title">Редактировать профиль</h3>
-        <form class="popup__form-element" name="editForm">
+        <form class="popup__form-element popup__form-element_type_edit-profile" name="editForm">
           <input class="popup__text popup__text_type_name" type="text" name="firstname">
           <input class="popup__text popup__text_type_job" type="text" name="job">
           <button class="popup__save" type="submit" aria-label="Сохранить редактирование">Сохранить</button>
@@ -47,10 +47,10 @@
   </div>
   <div class="popup popup_type_new-place">
     <div class="popup__container popup__container_size_s">
-      <button class="popup__close-btn popup__close-btn_size_s" type="button" aria-label="Закрыть окно"></button>
+      <button class="popup__close-btn popup__close-btn_size_m" type="button" aria-label="Закрыть окно"></button>
       <div class="popup__content">
         <h3 class="popup__title popup__title_type_new-place">Новое место</h3>
-        <form class="popup__form-element" name="editForm">
+        <form class="popup__form-element popup__form-element_type_new-place" name="editForm">
           <input class="popup__text popup__text_type_title" type="text" name="title" placeholder="Название">
           <input class="popup__text popup__text_type_link" type="text" name="link" placeholder="Ссылка на картинку">
           <button class="popup__save popup__save_type_new-place" type="submit" aria-label="Создать карточку">Создать</button>
@@ -60,7 +60,7 @@
   </div>
   <div class="popup popup_type_images">
     <div class="popup__container popup__container_size_m">
-      <button class="popup__close-btn popup__close-btn_size_m" type="button" aria-label="Закрыть окно"></button>
+      <button class="popup__close-btn popup__close-btn_size_l" type="button" aria-label="Закрыть окно"></button>
       <img class="popup__image" alt="Выбранное изображение">
       <h2 class="popup__title popup__title_type_images"></h2>
     </div>
