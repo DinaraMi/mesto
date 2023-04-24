@@ -1,4 +1,5 @@
 .popup__container_size_m{
+  all: unset;
   min-width: 240px;
   width: 75%;
   max-width: 816px;
