@@ -8,9 +8,27 @@ const closeBtnEditProfilePopup = editProfilePopup.querySelector('.popup__close-b
 const formElementEditProfile = editProfilePopup.querySelector('.popup__form-element_type_edit-profile');
 const openPopup = (popupElement) => {
   popupElement.classList.add('popup_opened');
+  popupElement.addEventListener('click', (evt) => {
+    if (evt.target === popupElement) {
+      closePopup(popupElement);
+    }
+  });
+  document.addEventListener('keydown', handleEscPress);
+};
+const handleEscPress = (evt) => {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
 };
 const closePopup = (popupElement) => {
   popupElement.classList.remove('popup_opened');
+  popupElement.removeEventListener('click', (evt) => {
+    if (evt.target === popupElement) {
+      closePopup(popupElement);
+    }
+  });
+  document.removeEventListener('keydown', handleEscPress);
 };
 const openPopupEditProfile = () => {
   openPopup(editProfilePopup);
