@@ -8,12 +8,14 @@ const closeBtnEditProfilePopup = editProfilePopup.querySelector('.popup__close-b
 const formElementEditProfile = editProfilePopup.querySelector('.popup__form-element_type_edit-profile');
 const openPopup = (popupElement) => {
   popupElement.classList.add('popup_opened');
-  popupElement.addEventListener('click', (evt) => {
-    if (evt.target === popupElement) {
-      closePopup(popupElement);
-    }
-  });
+  popupElement.addEventListener('click', handlePopupClick);
   document.addEventListener('keydown', handleEscPress);
+};
+const handlePopupClick = (evt) => {
+  const openedPopup = document.querySelector('.popup_opened');
+  if (evt.target === openedPopup) {
+    closePopup(openedPopup);
+  }
 };
 const handleEscPress = (evt) => {
   if (evt.key === 'Escape') {
@@ -23,11 +25,7 @@ const handleEscPress = (evt) => {
 };
 const closePopup = (popupElement) => {
   popupElement.classList.remove('popup_opened');
-  popupElement.removeEventListener('click', (evt) => {
-    if (evt.target === popupElement) {
-      closePopup(popupElement);
-    }
-  });
+  popupElement.removeEventListener('click', handlePopupClick);
   document.removeEventListener('keydown', handleEscPress);
 };
 const openPopupEditProfile = () => {
@@ -54,14 +52,22 @@ const closeBtnNewPlace = popupNewPlace.querySelector ('.popup__close-btn_size_m'
 const inputNewPlaceTitle = popupNewPlace.querySelector ('.popup__text_type_title');
 const inputNewPlaceLink = popupNewPlace.querySelector ('.popup__text_type_link');
 const createCardForm = popupNewPlace.querySelector ('.popup__form-element_type_new-place');
+const createCardBtn = popupNewPlace.querySelector('.popup__save_type_new-place');
 const groupTemplate = document.getElementById ('group-template');
 const groups = document.querySelector ('.group');
 const openPopupNewPlace = () => {
   openPopup(popupNewPlace);
+  createCardBtn.classList.add('popup__save_disabled');
+  createCardBtn.setAttribute('disabled', true);
 };
 const closeNewPlace = () => {
   closePopup(popupNewPlace);
+  createCardBtn.removeAttribute('disabled');
 };
+const resetFormInputs = () =>{
+  inputNewPlaceTitle.value = '';
+  inputNewPlaceLink.value = '';
+}
 const createNewCards = (card) => {
   const groupElement = groupTemplate.content.querySelector('.group__element').cloneNode(true);
   const groupImage = groupElement.querySelector('.group__mask');
@@ -82,6 +88,7 @@ const createNewCards = (card) => {
   groupImage.addEventListener('click', () => {
     openPopupImage(card);
   });
+  resetFormInputs();
   return groupElement;
 }
 initialCards.forEach((card) =>{
