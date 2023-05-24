@@ -13,15 +13,13 @@ export class Card {
   }
   _setEventListeners() {
     const deleteButton = this._element.querySelector('.group__delite');
-    const likeButton = this._element.querySelector('.group__vector');
-    const image = this._element.querySelector('.group__mask');
     deleteButton.addEventListener('click', () => {
       this._handleDeleteClick();
     });
-    likeButton.addEventListener('click', () => {
+    this._likeButton.addEventListener('click', () => {
       this._handleLikeClick();
     });
-    image.addEventListener('click', () => {
+    this._cardImage.addEventListener('click', () => {
       this._handleImageClick();
     });
   }
@@ -29,18 +27,18 @@ export class Card {
     this._element.remove();
   }
   _handleLikeClick() {
-    const likeButton = this._element.querySelector('.group__vector');
-    likeButton.classList.toggle('group__vector_active');
+    this._likeButton.classList.toggle('group__vector_active');
   }
   _handleImageClick() {
     openPopupImage({ name: this._name, link: this._link });
   }
   generateCard() {
     this._element = this._getTemplate();
-    const image = this._element.querySelector('.group__mask');
+    this._likeButton = this._element.querySelector('.group__vector');
+    this._cardImage = this._element.querySelector('.group__mask');
     const title = this._element.querySelector('.group__paragraph');
-    image.src = this._link;
-    image.alt = this._name;
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._name;
     title.textContent = this._name;
     this._setEventListeners();
     return this._element;
@@ -51,9 +49,6 @@ const groups = document.querySelector ('.group');
 const createNewCard = (cardData) => {
   const card = new Card(cardData, templateSelector);
   const cardElement = card.generateCard();
-  cardElement.querySelector('.group__mask').addEventListener('click', () => {
-    openPopupImage(cardData);
-  });
   return cardElement;
 };
 export const addCard = (cardData) => {
