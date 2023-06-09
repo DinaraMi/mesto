@@ -4,21 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Место</title>
-  <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body class="body">
   <div class="page">
     <header class="header">
-      <img class="header__logo" src="./images/Vector.svg" alt="логотип">
+      <img class="header__logo" src="<%=require('./images/Vector.svg')%>" alt="логотип">
     </header>
     <main class="content">
       <section class="profile">
-        <img class="profile__avatar" src="./images/avatar.jpg" alt="Жак-Ив-Кусто">
+        <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Жак-Ив-Кусто">
         <div class="profile__info">
           <div class="profile__informs">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <button class="profile__edit-button" type="button" aria-label="Редактировать">
-              <img class="profile__vector" src="./images/vectorButton.svg" alt="Кнопка редактирования">
+              <img class="profile__vector" src="<%=require('./images/vectorButton.svg')%>" alt="Кнопка редактирования">
             </button>
           </div>
             <p class="profile__subtitle">Исследователь океана</p>
@@ -79,9 +78,9 @@
   </div>
   <template id="group-template">
     <div class="group__element">
-      <img class="group__mask" alt="">
+      <img class="group__mask" src="" alt="">
       <button class="group__delite" type="button" aria-label="Удалить картинку">
-        <img class="group__img" src="./images/Trash.png" alt="Картинка удаления">
+        <img class="group__img" src="<%=require('./images/Trash.png')%>" alt="Картинка удаления">
       </button>
       <div class="group__text">
         <h2 class="group__paragraph"></h2>
@@ -89,9 +88,5 @@
       </div>
     </div>
   </template>
-  <script src="./scripts/constants.js" type="module"></script>
-  <script src="./scripts/card.js" type="module"></script>
-  <script src="./scripts/index.js" type="module"></script>
-  <script src="./scripts/FormValidator.js" type="module"></script>
 </body>
 </html>
