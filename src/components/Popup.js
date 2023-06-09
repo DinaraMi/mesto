@@ -28,3 +28,13 @@ export default class Popup {
     });
   }
 }
+const popupNewPlace = new Popup('.popup_type_new-place');
+const popupEditProfile = new Popup('.popup_type_edit-profile');
+const closeBtnNewPlace = document.querySelector('.popup__close-btn_size_m');
+const closeBtnEditProfilePopup = document.querySelector('.popup__close-btn_size_s');
+closeBtnNewPlace.addEventListener('click', () => {
+  popupNewPlace.close();
+});
+closeBtnEditProfilePopup.addEventListener('click', () => {
+  popupEditProfile.close();
+});

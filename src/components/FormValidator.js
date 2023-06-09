@@ -25,9 +25,6 @@ export class FormValidator {
     }
   }
   _toggleSubmitButtonState() {
-    this._inputList.forEach((inputElement) => {
-      this._checkInputValidity(inputElement);
-    });
     if (this._inputList.every((input) => input.validity.valid)) {
       this._submitButton.disabled = false;
       this._submitButton.classList.remove(this._config.inactiveButtonClass);

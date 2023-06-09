@@ -3,7 +3,7 @@ export default class Card {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
-    this._handleCardClick = handleCardClick;
+    this._handleCardClick = handleCardClick.bind(this);
   }
   _getTemplate() {
     const templateElement = document.querySelector(this._templateSelector);
@@ -39,6 +39,7 @@ export default class Card {
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
     title.textContent = this._name;
+    this._cardImage.style.cursor = 'pointer';
     this._setEventListeners();
     return this._element;
   }
