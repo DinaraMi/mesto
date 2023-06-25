@@ -12,15 +12,20 @@
     </header>
     <main class="content">
       <section class="profile">
-        <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Жак-Ив-Кусто">
+        <div class="profile__avatar-container">
+          <button class="profile__avatar-button" type="button" aria-label="Обновить аватарку">
+            <img class="profile__avatar" src="#" alt="Жак-Ив-Кусто">
+            <span class="profile__avatar-edit-icon"></span>
+          </button>
+        </div>
         <div class="profile__info">
           <div class="profile__informs">
-            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <h1 class="profile__title"></h1>
             <button class="profile__edit-button" type="button" aria-label="Редактировать">
               <img class="profile__vector" src="<%=require('./images/vectorButton.svg')%>" alt="Кнопка редактирования">
             </button>
           </div>
-            <p class="profile__subtitle">Исследователь океана</p>
+            <p class="profile__subtitle"></p>
         </div>
           <button class="profile__add-button" type="button" aria-label="Добавить картинку"></button>
       </section>
@@ -76,6 +81,33 @@
       <h2 class="popup__title popup__title_type_images"></h2>
     </div>
   </div>
+  <div class="popup popup_type_avatar">
+    <div class="popup__container popup__container_size_l">
+      <button class="popup__close-btn popup__close-btn_size_xl" type="button" aria-label="Закрыть окно"></button>
+      <div class="popup__content">
+        <h3 class="popup__title popup__title_type_avatar">Обновить аватар</h3>
+        <form class="popup__form-element popup__form-element_type_avatar" name="avatar" novalidate>
+          <div class="popup__input-container">
+            <input id="link" class="popup__text popup__text_type_avatar" type="url" name="link" placeholder="Ссылка на картинку" minlength="2" maxlength="200" required>
+
+            <span id="link-error" class="popup__error"></span>
+          </div>
+          <button class="popup__save popup__save_type_avatar" type="submit" aria-label="Обновить аватарку">Сохранить</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="popup popup_type_delite-card">
+    <div class="popup__container popup__container_size_xl">
+      <button class="popup__close-btn popup__close-btn_size_xll" type="button" aria-label="Закрыть окно"></button>
+      <div class="popup__content">
+        <h3 class="popup__title popup__title_type_delite-card">Вы уверены?</h3>
+        <form class="popup__form-element popup__form-element_type_delite-card" name="delite-card" novalidate>
+          <button class="popup__save popup__save_type_delite-card" type="submit" aria-label="Удалить карточку">Да</button>
+        </form>
+      </div>
+    </div>
+  </div>
   <template id="group-template">
     <div class="group__element">
       <img class="group__mask" alt="">
@@ -84,9 +116,13 @@
       </button>
       <div class="group__text">
         <h2 class="group__paragraph"></h2>
-        <button class="group__vector" type="button" aria-label="Поставить лайк"></button>
+        <div class="group__likes">
+          <button class="group__vector" type="button" aria-label="Поставить лайк"></button>
+          <p class="group__counter_likes"></p>
+        </div>
       </div>
     </div>
   </template>
+  <script src="./pages/Api.js" type="module"></script>
 </body>
 </html>
