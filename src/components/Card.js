@@ -20,10 +20,11 @@ export default class Card {
     return cardElement;
   }
   _handleDeleteClick() {
-    this._handleDeleteCard({ card: this, cardId: this._cardId});
+    this._handleDeleteCard({ card: this, cardId: this._cardId });
   }
   _handleLikeClick() {
-    this._changeLikes(this._likeButton, this._cardId);
+    const isLiked = this._likeButton.classList.contains('group__vector_active');
+    this._changeLikes(isLiked, this._cardId);
   }
   _handleImageClick() {
     this._handleCardClick({ name: this._name, link: this._link });
@@ -33,19 +34,17 @@ export default class Card {
       this._deleteButton.remove();
     }
   }
-  _checkStatusLikes(){
-    this._likes.forEach(item => {
-      if (item._id === this._myId) {
-        this._likeButton.classList.add('group__vector_active');
-        return
-      }})
-      this._counterLikes.textContent = this._likesLength
+  _checkStatusLikes() {
+    if (this._likes.some(item => item._id === this._myId)) {
+      this._likeButton.classList.add('group__vector_active');
     }
+    this._counterLikes.textContent = this._likesLength;
+  }
   toggleLikes(likes) {
     this._likeButton.classList.toggle('group__vector_active');
     this._counterLikes.textContent = likes.length;
   }
-  removeCard(){
+  removeCard() {
     this._cardElement.remove();
     this._cardElement = null;
   }

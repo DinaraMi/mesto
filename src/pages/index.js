@@ -27,46 +27,44 @@ const api = new Api({
       'Content-Type': 'application/json'
     }
   });
-const createNewCard = (cardData) => {
-  const handleCardClick = (data) => {
-    popupWithImage.open(data);
-  };
-  const handleDeleteCard = function(card, cardId) {
-    popupDeleteCard.open(card, cardId);
-  }.bind(this);
-  const card = new Card(cardData, templateSelector, handleCardClick, handleDeleteCard, (likeButton, cardId) => {
-    if (likeButton.classList.contains('group__vector_active')) {
-      api.deleteLike(cardId)
-        .then(res => {
-          card.toggleLikes(res.likes);
-        })
-        .catch((error) => console.error(`Ошибка ${error}`));
-    } else {
-      api.addLike(cardId)
-        .then(res => {
-          card.toggleLikes(res.likes);
-        })
-        .catch((error) => console.error(`Ошибка ${error}`));
-    }
-  });
+  const createNewCard = (cardData) => {
+    const handleCardClick = (data) => {
+      popupWithImage.open(data);
+    };
+    const handleDeleteCard = function(card, cardId) {
+      popupDeleteCard.open(card, cardId);
+    };
+    const card = new Card(cardData, templateSelector, handleCardClick, handleDeleteCard, (isLiked, myId) => {
+      if (isLiked) {
+        api.deleteLike(myId)
+          .then(res => {
+            card.toggleLikes(res.likes);
+          })
+          .catch((error) => console.error(`Ошибка ${error}`));
+      } else {
+        api.addLike(myId)
+          .then(res => {
+            card.toggleLikes(res.likes);
+          })
+          .catch((error) => console.error(`Ошибка ${error}`));
+      }
+    });
     return card.generateCard();
-};
+  };
 const popupDeleteCard = new PopupDeleteCard('.popup_type_delite-card', ({ card, cardId }) => {
   api.deleteCard(cardId)
     .then(() => {
       card.removeCard();
-      popupDeleteCard.close()
+      popupDeleteCard.close();
     })
     .catch((error) => console.error(`Ошибка ${error}`));
 });
 const popupNewPlace = new PopupWithForm('.popup_type_new-place', (data) => {
-  Promise.all([api.getUserInformation(), api.addCard(data)])
-    .then(([dataUser, dataCard]) => {
-      const updatedDataCard = { ...dataCard };
-      if (dataUser && dataUser._id) {
-        updatedDataCard.myId = dataUser._id;
-      }
-  section.addItem(createNewCard(updatedDataCard));
+  api.addCard(data)
+    .then((dataCard) => {
+      const updatedDataCard = { ...dataCard, myId: dataCard.owner._id };
+      section.addItem(createNewCard(updatedDataCard));
+      popupNewPlace.close();
     })
     .catch((error) => console.error(`Ошибка ${error}`))
     .finally(() => popupNewPlace.editDefaultText());
@@ -85,10 +83,10 @@ const section = new Section({
 const popupEditProfile = new PopupWithForm('.popup_type_edit-profile', (inputValues) => {
   const name = inputValues.firstname;
   const info = inputValues.job;
-  const avatar = inputValues.link;
   api.editUserInformation({ name, info, avatar })
     .then(res => {
       userInfo.setUserInfo({ name: res.name, info: res.about, avatar: res.avatar });
+      popupEditProfile.close();
     })
     .catch((error) => console.error(`Ошибка ${error}`))
     .finally(() => popupEditProfile.editDefaultText());
@@ -96,7 +94,8 @@ const popupEditProfile = new PopupWithForm('.popup_type_edit-profile', (inputVal
 const popupAvatar = new PopupWithForm('.popup_type_avatar', (data) => {
   api.editUserAvatar(data)
     .then(res => {
-      userInfo.setUserInfo({ name: res.name, info: res.about, avatar: res.avatar })
+      userInfo.setUserInfo({ name: res.name, info: res.about, avatar: res.avatar });
+      popupAvatar.close();
     })
     .catch((error) => console.error(`Ошибка ${error}`))
     .finally();
@@ -117,15 +116,12 @@ openBtnAvatarPopup.addEventListener('click', () => {
   formValidatorAvatar.resetValidation();
 });
 avatarElement.addEventListener('mouseenter', () => {
-  editIconElement.style.display = 'block'
-  avatarElement.style.opacity = '0.6';
+  editIconElement.classList.add('profile__avatar-edit-icon_active');
 });
 avatarElement.addEventListener('mouseleave', () => {
-  editIconElement.style.display = 'none'
-  avatarElement.style.opacity = '1';
+  editIconElement.classList.remove('profile__avatar-edit-icon_active');
 });
 popupEditProfile.setEventListeners();
-popupNewPlace.close();
 popupNewPlace.setEventListeners();
 popupWithImage.setEventListeners();
 popupAvatar.setEventListeners();
